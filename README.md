@@ -1,4 +1,4 @@
-# 🌍 Carbon Emissions Forecasting (ARIMA Time Series Analysis)
+# 🌍 Carbon Emissions Forecasting -ARIMA Time Series Analysis-
 This project applies the ARIMA (Autoregressive Integrated Moving Average) model to historical carbon emission data to forecast future trends and quantify prediction accuracy. The final model is used to project emissions over a 5-year timeframe, providing crucial insights for environmental planning and policy-making.
 
 **Source:** [Energy Institute](https://www.energyinst.org)
