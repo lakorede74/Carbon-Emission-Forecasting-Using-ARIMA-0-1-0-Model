@@ -109,8 +109,7 @@ q=0 (No Moving Average component)
 
 ---
 
-![ACF AND PACF PLOTS](<img width="945" height="268" alt="ACF_and_PACF" src="https://github.com/user-attachments/assets/76e72700-b60f-4e04-b67b-adb66eea9fa3" />
-) 
+![ACF AND PACF PLOTS](ACF_and_PACF.png) 
 
 ## Training/Testing: 
 
@@ -175,8 +174,7 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
 
 Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
 
-![ERROR_METRICS](<img width="414" height="83" alt="ERROR_METRICS" src="https://github.com/user-attachments/assets/bbc2e617-e6aa-421f-b1b3-5c2e2b1a6eb3" />
-)
+![ERROR_METRICS](ERROR_METRICS.PNG)
 
 
 ## Predit
