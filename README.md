@@ -1,4 +1,4 @@
-# 🌍 Carbon Emissions Forecasting -ARIMA Time Series Analysis-
+# 🌍 Carbon Emissions Forecasting ARIMA Time Series Analysis
 This project applies the ARIMA (Autoregressive Integrated Moving Average) model to historical carbon emission data to forecast future trends and quantify prediction accuracy. The final model is used to project emissions over a 5-year timeframe, providing crucial insights for environmental planning and policy-making.
 
 **Source:** [Energy Institute](https://www.energyinst.org)
@@ -173,6 +173,8 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
 ---
 
 Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
+![](https://github.com/lakorede74/Carbon-Emission-Forecasting-Using-ARIMA-0-1-0-Model/blob/main/ERROR_METRICS.png)
+
 
 ![ERROR_METRICS](ERROR_METRICS.png)
 
