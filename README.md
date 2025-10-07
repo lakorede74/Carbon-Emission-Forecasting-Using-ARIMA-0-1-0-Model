@@ -5,7 +5,6 @@ This project applies the ARIMA (Autoregressive Integrated Moving Average) model 
 - **Description:** 2025 Energy Institute Statistical Review of World Energy
 - **File name:** `EI-Stats-Review-ALL-data.xlsx
 `
-
  
 ## 🔬 Methodology Overview
 The analysis follows a standard time series workflow:
@@ -18,7 +17,7 @@ The analysis follows a standard time series workflow:
 
 -  The data was then transformed to logarithmic values to improve its linearity.
 
-## Here is my Code
+## Code
 
 ```
 
@@ -58,7 +57,6 @@ Carborn_df = extract_data("CO2e Emissions ", "Total World", "Carborn")
 
 #CHOOSING MY SAMPLE SIZE (FROM 1994 TO 2024)
 Carborn_df = Carborn_df.reset_index()
-Carborn_df = Carborn_df.drop(Carborn_df.columns[0], axis = 1)
 Carborn_df.rename(columns={Carborn_df.columns[0]: "Year"}, inplace= True)
 Carborn_df = Carborn_df.query("Year >=1994  and Year <= 2024")
 Carborn_df = Carborn_df[["Year", "Carborn"]].set_index("Year")
@@ -111,6 +109,9 @@ q=0 (No Moving Average component)
 
 ---
 
+![ACF AND PACF PLOTS](<img width="945" height="268" alt="ACF_and_PACF" src="https://github.com/user-attachments/assets/76e72700-b60f-4e04-b67b-adb66eea9fa3" />
+) 
+
 ## Training/Testing: 
 
 I splited my data for training and testing, 27 for train and the last 3 years was reserved for testing accuracy of my prediction as shown in the code blocks above
@@ -135,4 +136,49 @@ The model was trained on the full historical dataset and used to forecast emissi
 
 ## 📊 Key Results
 
+## forcast Result
+The prediction for test (2021 - 2024) and for  2025 - 2027
 
+[]
+
+
+## Mean Error Metrics
+The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage were calculated to measure to measure how far off is the prediction to the actual.
+
+---
+     test_forecast_steps = 3
+     forecast_log_test = log_train_forecast.get_forecast(steps=test_forecast_steps)
+     
+     forecast_test_value = np.exp(forecast_log_test.predicted_mean)
+     
+     actual_test_value = np.exp(log_test)
+     
+     
+     
+     
+     MAE_CO2 = mean_absolute_error(actual_test_value, forecast_test_value)
+     
+     RMSE_CO2 = np.sqrt(mean_squared_error(actual_test_value, forecast_test_value))
+     
+     #MEAN ABSOLUTE PERCENTAGE
+     forecast_test_value.index = actual_test_value.index
+     
+     MAPE_CO2 = np.mean(np.abs((actual_test_value - forecast_test_value)/actual_test_value)) * 100
+     
+     
+     Mean_errors_Metrics = pd.DataFrame({
+         'MAE': [MAE_CO2],
+         'RMSE': [RMSE_CO2],
+         'MAPE': [MAPE_CO2]
+         },index=['Error metrics'])
+---
+
+Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
+
+![ERROR_METRICS](<img width="414" height="83" alt="ERROR_METRICS" src="https://github.com/user-attachments/assets/bbc2e617-e6aa-421f-b1b3-5c2e2b1a6eb3" />
+)
+
+
+## Predit
+![ERROR_METRICS](<img width="414" height="83" alt="ERROR_METRICS" src="https://github.com/user-attachments/assets/24694fb4-7cb8-4022-b773-30f3c2ea20b0" />
+)
