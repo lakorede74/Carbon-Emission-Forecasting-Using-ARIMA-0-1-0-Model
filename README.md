@@ -109,11 +109,11 @@ q=0 (No Moving Average component)
 
 ---
 
-![ACF AND PACF PLOTS](ACF_and_PACF.png) 
+![](confidence_int.jpg) 
 
 ## Training/Testing: 
 
-I splited my data for training and testing, 27 for train and the last 3 years was reserved for testing accuracy of my prediction as shown in the code blocks above
+I splited my data for training and testing, 27 data points for train and the last 3 data points was reserved for testing accuracy of my prediction as shown in the code blocks above
 
 
 
@@ -138,7 +138,7 @@ The model was trained on the full historical dataset and used to forecast emissi
 ## forcast Result
 The prediction for test (2021 - 2024) and for  2025 - 2027
 
-[]
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTP42Na-4uAe_-LLvXirYxNTJoSeIWF1J9ZA&s)
 
 
 ## Mean Error Metrics
