@@ -174,9 +174,11 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
 
 Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
 
-![ERROR_METRICS](ERROR_METRICS.PNG)
+![ERROR_METRICS](ERROR_METRICS.png)
 
 
-## Predit
-![ERROR_METRICS](<img width="414" height="83" alt="ERROR_METRICS" src="https://github.com/user-attachments/assets/24694fb4-7cb8-4022-b773-30f3c2ea20b0" />
-)
+![ERROR_METRICS](ERROR_METRICS.png)
+
+
+## Prediction
+![PREDICTION](ACF_and_PACF.png)
