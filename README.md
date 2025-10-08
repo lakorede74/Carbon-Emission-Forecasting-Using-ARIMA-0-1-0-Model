@@ -79,7 +79,6 @@ d=1 (Integrated component/First difference, handled internally by the model)
 
 q=0 (No Moving Average component)
 
-![Image](https://github.com/user-attachments/assets/6dbd99c1-df4e-40e2-bfce-829dd5dcf360)
 
 ## The Code 
 ---
@@ -110,11 +109,11 @@ q=0 (No Moving Average component)
 
 ---
 
-![](confidence_int.jpg) 
 
 ## Training/Testing: 
 
 I splited my data for training and testing, 27 data points for train and the last 3 data points was reserved for testing accuracy of my prediction as shown in the code blocks above
+
 
 
 
@@ -139,7 +138,6 @@ The model was trained on the full historical dataset and used to forecast emissi
 ## forcast Result
 The prediction for test (2021 - 2024) and for  2025 - 2027
 
-![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTP42Na-4uAe_-LLvXirYxNTJoSeIWF1J9ZA&s)
 
 
 ## Mean Error Metrics
@@ -174,14 +172,9 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
 ---
 
 Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
-![](https://github.com/lakorede74/Carbon-Emission-Forecasting-Using-ARIMA-0-1-0-Model/blob/main/ERROR_METRICS.png)
 
 
-![ERROR_METRICS](ERROR_METRICS.png)
-
-
-![ERROR_METRICS](ERROR_METRICS.png)
 
 
 ## Prediction
-![PREDICTION](ACF_and_PACF.png)
+
