@@ -1,5 +1,7 @@
-# 🌍 Carbon Emissions Forecasting ARIMA Time Series Analysis
+# 🌍 Carbon Emissions Forecasting (ARIMA Time Series Analysis)
 This project applies the ARIMA (Autoregressive Integrated Moving Average) model to historical carbon emission data to forecast future trends and quantify prediction accuracy. The final model is used to project emissions over a 6-year timeframe, providing crucial insights for environmental planning and policy-making.
+
+## Dataset
 
 **Source:** [Energy Institute](https://www.energyinst.org)
 - **Description:** 2025 Energy Institute Statistical Review of World Energy
@@ -116,7 +118,7 @@ q=0 (No Moving Average component)
 
 ## Training/Testing: 
 
-I splited my data for training and testing, 27 data points for trainoing and the last 3 data points was reserved for testing the accuracy of my model's prediction as shown in the code blocks above
+I splited the data for training and testing, 27 data points for trainoing and the last 3 data points was reserved for testing the accuracy of my model's prediction as shown in the code blocks above
 
 
 
@@ -139,17 +141,17 @@ The model was trained on the full historical dataset and used to forecast emissi
 
 ## 📊 Key Results
 
-## forcast Result
+### forcast Result
 The prediction for test (2021 - 2024) and for  2025 - 2027
 
-## Prediction
+### Prediction
 
 ![](https://github.com/lakorede74/Carbon-Emission-Forecasting-Using-ARIMA-0-1-0-Model/blob/9e05fb6c2b9d061d4fbcdc163e26c532e3feea74/PREDICTION.png)
 
 
 ## The PLot 
 The plot of Carbon emission trend from 1984 - 2024 (green), predicted emissions from 2021 - 2027 (red)
-It gives a clear insight of how close the the predictipons are to the actual values for the test 
+shows how close the predictions are to the actual values of the test period
 
 ---
       plt.plot(CO2_series.index, CO2_series.values, label="Carbon emission(million-tone)", color="green")
@@ -168,8 +170,8 @@ It gives a clear insight of how close the the predictipons are to the actual val
 ## Forecast plot
 ![FORECAST PLOT](FINALFORECASTPLOT.png)
 
-## Mean Error Metrics
-The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage were calculated to measure to measure how far off are the predicted values to the actual values.
+## Validation (Mean Error Metrics)
+The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage were calculated to measure how far off are the predicted values to the actual values.
 
 ---
      test_forecast_steps = 3
@@ -199,10 +201,33 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
          },index=['Error metrics'])
 ---
 
+
+## Test forecast values VS actual values
 ![](TEST_FORECASTandACTUAL.png)
 
-Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
+Mean Result shows that the predicted values did not really deviate from it's actual values, which means forecast are reliable 
 ![ERROR METRICS](ERROR_METRICS.png)
 
 
+---
+# Conclusion/Recommendation
+Year to year continuous positive growth rate of Carbon emissions indicates:
+
+- Poor adoption of clean and renewable energy policy
+- Economic  expansion
+- Heavy reliance on fossil fuels
+
+The constraints for the poor transitioning to clean and renewable energy should be investigated and subtly address to avoid adverse climatic impacts of increasing growth of carbon emission.
+
+
+## 🛠️ Tools and Libraries
+
+| Library | Purpose |
+|----------|----------|
+| `pandas` | Data manipulation and cleaning |
+| `numpy` | Numerical computations |
+| `matplotlib` | Visualization |
+| `statsmodels` | ARIMA model implementation |
+
+---
 
