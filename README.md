@@ -79,6 +79,7 @@ d=1 (Integrated component/First difference, handled internally by the model)
 
 q=0 (No Moving Average component)
 
+![Image](https://github.com/user-attachments/assets/6dbd99c1-df4e-40e2-bfce-829dd5dcf360)
 
 ## The Code 
 ---
