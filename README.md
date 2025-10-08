@@ -1,12 +1,13 @@
 # 🌍 Carbon Emission Forecasting Using ARIMA (0,1,0) Model
 
 > *Predicting global CO₂ emissions for a sustainable future*
+
 This project applies the ARIMA (Autoregressive Integrated Moving Average) model to historical carbon emission data to forecast future trends and quantify prediction accuracy. The final model is used to project emissions over a 6-year timeframe, providing crucial insights for environmental planning and policy-making.
 
 ## Dataset
 
 **Source:** [Energy Institute](https://www.energyinst.org)
-- **Description:** 2025 Energy Institute Statistical Review of World Energy
+- **Description:** Energy Institute Statistical Review of World Energy
 - **File name:** `EI-Stats-Review-ALL-data.xlsx
 
 
@@ -17,25 +18,25 @@ This project applies the ARIMA (Autoregressive Integrated Moving Average) model 
 The modeling was carried out using Spyder (Python) within the Anaconda environment.
 The process involved the following key stages:
 
-1. Data Cleaning & Transformation
+## 1. Data Cleaning & Transformation
 
 - Removal of missing values and irrelevant columns.
 
 - Converting emission data to a proper time series format.
 
-2. Exploratory Data Analysis (EDA)
+## 2. Exploratory Data Analysis (EDA)
 
 - Line plots and decomposition to understand trend and seasonality.
 
 - ACF and PACF plots to evaluate autocorrelation patterns.
 
-3. Model Building
+## 3. Model Building
 
 - Applied ARIMA (0,1,0) model.
 
 - Parameters chosen based on stationarity and AIC/BIC evaluation.
 
-4. Model Evaluation
+## 4. Model Evaluation
 
 Metrics used:
 
@@ -93,8 +94,48 @@ Carborn_df = Carborn_df[["Year", "Carborn"]].set_index("Year")
 
 ```
 
+## Stationarity Testing:
 
-## Stationarity Testing: 
+## before differencing
+
+---
+    # conversion to logarithm
+     CO2_series = Carborn_df.squeeze()
+      
+     if CO2_series.min() <= 0:
+     CO2_series += abs(CO2_series.min()) +1
+          
+     print("WARNING: Data shifted to positivity to ensure log transformation")
+      
+     CO2_log = np.log(CO2_series)
+     
+     result = adfuller(CO2_log)
+     
+     
+     print('ADF %f:' %result[0],
+            'P-value %f:' %result[1])
+ 
+---
+  
+|ADF | P-value |
+|-----|--------|
+|-1.428161 | 0.568704|
+
+The result from ADF test shows that the stationarity of the to be less signifcant level. Thus, the  need for differencing (d)
+
+## After differencing
+---
+
+     result_d1 = adfuller(CO2_log.diff().dropna())
+          
+     print('ADF %f:' %result_d1[0])
+     print('P-value %f:' %result_d1[1])
+
+---
+
+| ADF | P-value|
+|------|----|
+|-4.753784 |  0.000067|
 
 The Augmented Dickey-Fuller (ADF) test confirmed that the log-transformed series required first-order differencing to achieve stationarity.
 
@@ -106,18 +147,11 @@ d=1 (Integrated component/First difference, handled internally by the model)
 
 q=0 (No Moving Average component)
 
+Hence: Yt′​=Yt ​− Yt−1
 
 ## The Code 
 ---
-      CO2_series = Carborn_df.squeeze()
-      
-      if CO2_series.min() <= 0:
-          CO2_series += abs(CO2_series.min()) +1
-          
-          print("WARNING: Data shifted to positivity to ensure log transformation")
-      
-      CO2_log = np.log(CO2_series)
-      
+     
       result = adfuller(CO2_log)
       
       
