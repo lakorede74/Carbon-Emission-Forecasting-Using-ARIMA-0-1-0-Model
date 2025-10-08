@@ -1,4 +1,6 @@
-# 🌍 Carbon Emissions Forecasting (ARIMA Time Series Analysis)
+# 🌍 Carbon Emission Forecasting Using ARIMA (0,1,0) Model
+
+> *Predicting global CO₂ emissions for a sustainable future*
 This project applies the ARIMA (Autoregressive Integrated Moving Average) model to historical carbon emission data to forecast future trends and quantify prediction accuracy. The final model is used to project emissions over a 6-year timeframe, providing crucial insights for environmental planning and policy-making.
 
 ## Dataset
@@ -6,20 +8,45 @@ This project applies the ARIMA (Autoregressive Integrated Moving Average) model 
 **Source:** [Energy Institute](https://www.energyinst.org)
 - **Description:** 2025 Energy Institute Statistical Review of World Energy
 - **File name:** `EI-Stats-Review-ALL-data.xlsx
-`
+
+
+> *The dataset contains aggregated emissions data representing worldwide energy-related CO₂ output.*
  
-## 🔬 Methodology Overview
-The analysis follows a standard time series workflow:
+## Model Overview
+
+The modeling was carried out using Spyder (Python) within the Anaconda environment.
+The process involved the following key stages:
+
+1. Data Cleaning & Transformation
+
+- Removal of missing values and irrelevant columns.
+
+- Converting emission data to a proper time series format.
+
+2. Exploratory Data Analysis (EDA)
+
+- Line plots and decomposition to understand trend and seasonality.
+
+- ACF and PACF plots to evaluate autocorrelation patterns.
+
+3. Model Building
+
+- Applied ARIMA (0,1,0) model.
+
+- Parameters chosen based on stationarity and AIC/BIC evaluation.
+
+4. Model Evaluation
+
+Metrics used:
+
+- MAE – Mean Absolute Error
+
+- RMSE – Root Mean Squared Error
+
+- MAPE – Mean Absolute Percentage Error
+
 
 ## Data Preparation: 
-
-- The raw dataset comparises of numerous information raging from energy production, consunptions, emissions etc 
-
-- Historical Carbon emissions data was extracted for  year 1994 - 2024 from the large dataset which was in Million Tons for standardized reporting
-
--  The data was then transformed to logarithmic values to improve its linearity.
-
-## Code
 
 ```
 
@@ -67,8 +94,6 @@ Carborn_df = Carborn_df[["Year", "Carborn"]].set_index("Year")
 ```
 
 
-
-
 ## Stationarity Testing: 
 
 The Augmented Dickey-Fuller (ADF) test confirmed that the log-transformed series required first-order differencing to achieve stationarity.
@@ -111,7 +136,7 @@ q=0 (No Moving Average component)
 
 ---
 
-## ACF & PACF
+## ACF & PACF Plots
 ![](acfAndPacf.png)
 
 
@@ -125,7 +150,7 @@ I splited the data for training and testing, 27 data points for trainoing and th
 
 ## Forecasting: 
 
-The model was trained on the full historical dataset and used to forecast emission levels and their confidence intervals(95%).
+The model was trained on the full historical dataset and was used to forecast emission levels and their confidence intervals(95%).
 
 ---
     forecast_steps = 6
@@ -170,7 +195,7 @@ shows how close the predictions are to the actual values of the test period
 ## Forecast plot
 ![FORECAST PLOT](FINALFORECASTPLOT.png)
 
-## Validation (Mean Error Metrics)
+## Evaluation Metrics (Mean Error Metrics)
 The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage were calculated to measure how far off are the predicted values to the actual values.
 
 ---
@@ -188,7 +213,7 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
      
      RMSE_CO2 = np.sqrt(mean_squared_error(actual_test_value, forecast_test_value))
      
-     #MEAN ABSOLUTE PERCENTAGE
+     #MEAN ABSOLUTE PERCENTAGE ERROR
      forecast_test_value.index = actual_test_value.index
      
      MAPE_CO2 = np.mean(np.abs((actual_test_value - forecast_test_value)/actual_test_value)) * 100
@@ -210,14 +235,25 @@ Mean Result shows that the predicted values did not really deviate from it's act
 
 
 ---
-# Conclusion/Recommendation
+
+## 🧠 Key Insights & Discussion
+
+- The forecast reveals a steady upward trend in carbon emissions, indicating continuous dependency on fossil fuels.
+
+- While growth appears moderate, even small increases can significantly impact global warming and climate systems.
+
+- A 0.48% MAPE confirms the ARIMA model provides high predictive accuracy for short-term forecasts.
+
+However, the model does not account for policy changes, technological innovation, or renewable adoption — which may alter future emission patterns.
+
+# Discussion
 Year to year continuous positive growth rate of Carbon emissions indicates:
 
 - Poor adoption of clean and renewable energy policy
 - Economic  expansion
 - Heavy reliance on fossil fuels
 
-The constraints for the poor transitioning to clean and renewable energy should be investigated and subtly address to avoid adverse climatic impacts of increasing growth of carbon emission.
+The constraints for the poor transitioning to clean and renewable energy should be investigated and subtly address to avoid adverse climatic impacts of increasing growth of Carbon emission.
 
 
 ## 🛠️ Tools and Libraries
@@ -229,5 +265,11 @@ The constraints for the poor transitioning to clean and renewable energy should 
 | `matplotlib` | Visualization |
 | `statsmodels` | ARIMA model implementation |
 
+
+📬 Author
+
+👤 Lukman Akorede
+Data Analyst, Data Science & Machine Learning Enthusiast
+GitHub: @lakorede74
 ---
 
