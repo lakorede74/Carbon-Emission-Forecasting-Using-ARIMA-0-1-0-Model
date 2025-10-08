@@ -1,5 +1,5 @@
 # 🌍 Carbon Emissions Forecasting ARIMA Time Series Analysis
-This project applies the ARIMA (Autoregressive Integrated Moving Average) model to historical carbon emission data to forecast future trends and quantify prediction accuracy. The final model is used to project emissions over a 5-year timeframe, providing crucial insights for environmental planning and policy-making.
+This project applies the ARIMA (Autoregressive Integrated Moving Average) model to historical carbon emission data to forecast future trends and quantify prediction accuracy. The final model is used to project emissions over a 6-year timeframe, providing crucial insights for environmental planning and policy-making.
 
 **Source:** [Energy Institute](https://www.energyinst.org)
 - **Description:** 2025 Energy Institute Statistical Review of World Energy
@@ -13,7 +13,7 @@ The analysis follows a standard time series workflow:
 
 - The raw dataset comparises of numerous information raging from energy production, consunptions, emissions etc 
 
-- Historical Carbon emissions data was extracted for  year 1994 - 2024 the from the large dataset which was in Million Tons for standardized reporting
+- Historical Carbon emissions data was extracted for  year 1994 - 2024 from the large dataset which was in Million Tons for standardized reporting
 
 -  The data was then transformed to logarithmic values to improve its linearity.
 
@@ -116,14 +116,14 @@ q=0 (No Moving Average component)
 
 ## Training/Testing: 
 
-I splited my data for training and testing, 27 data points for train and the last 3 data points was reserved for testing accuracy of my prediction as shown in the code blocks above
+I splited my data for training and testing, 27 data points for trainoing and the last 3 data points was reserved for testing the accuracy of my model's prediction as shown in the code blocks above
 
 
 
 
 ## Forecasting: 
 
-The model was trained on the full historical dataset and used to forecast emission levels and their 95% confidence intervals.
+The model was trained on the full historical dataset and used to forecast emission levels and their confidence intervals(95%).
 
 ---
     forecast_steps = 6
@@ -148,7 +148,25 @@ The prediction for test (2021 - 2024) and for  2025 - 2027
 
 
 ## The PLot 
+The plot of Carbon emission trend from 1984 - 2024 (green), predicted emissions from 2021 - 2027 (red)
+It gives a clear insight of how close the the predictipons are to the actual values for the test 
 
+---
+      plt.plot(CO2_series.index, CO2_series.values, label="Carbon emission(million-tone)", color="green")
+      
+      plt.plot(PREDICTION.index, PREDICTION['Predicted emission'], label="predicted emission(million-tone)", color="red", linestyle='--')
+       
+      plt.fill_between(PREDICTION.index, PREDICTION["Lower_ci (95%)"], PREDICTION['Upper_ci (95%)'], label="confidence interval (million-tone)", color="grey")
+      
+      plt.title(f'Carbon emission forecast with ARIMA(0, 1, 0) Model')
+      plt.ylabel('Emission(million-tone)')
+      plt.xlabel('Year')
+      plt.grid(True, alpha= 0.5)
+      plt.legend()
+      plt.show()
+---
+## Forecast plot
+![FORECAST PLOT](FINALFORECASTPLOT.png)
 
 ## Mean Error Metrics
 The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage were calculated to measure to measure how far off are the predicted values to the actual values.
@@ -180,6 +198,8 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
          'MAPE': [MAPE_CO2]
          },index=['Error metrics'])
 ---
+
+![](TEST_FORECASTandACTUAL.png)
 
 Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
 ![ERROR METRICS](ERROR_METRICS.png)
