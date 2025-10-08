@@ -109,6 +109,10 @@ q=0 (No Moving Average component)
 
 ---
 
+## ACF & PACF
+![](acfAndPacf.png)
+
+
 
 ## Training/Testing: 
 
@@ -122,7 +126,7 @@ I splited my data for training and testing, 27 data points for train and the las
 The model was trained on the full historical dataset and used to forecast emission levels and their 95% confidence intervals.
 
 ---
-    forecast_steps = 5
+    forecast_steps = 6
     
     log_train_forecast = ARIMA(log_train, order=(0, 1, 0), trend='t').fit()
     
@@ -138,10 +142,16 @@ The model was trained on the full historical dataset and used to forecast emissi
 ## forcast Result
 The prediction for test (2021 - 2024) and for  2025 - 2027
 
+## Prediction
+
+![](https://github.com/lakorede74/Carbon-Emission-Forecasting-Using-ARIMA-0-1-0-Model/blob/9e05fb6c2b9d061d4fbcdc163e26c532e3feea74/PREDICTION.png)
+
+
+## The PLot 
 
 
 ## Mean Error Metrics
-The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage were calculated to measure to measure how far off is the prediction to the actual.
+The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage were calculated to measure to measure how far off are the predicted values to the actual values.
 
 ---
      test_forecast_steps = 3
@@ -172,9 +182,7 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
 ---
 
 Mean Result shows that the ppredicted values are not really far off from the actual values, which means forecast are reliable 
+![ERROR METRICS](ERROR_METRICS.png)
 
 
-
-
-## Prediction
 
