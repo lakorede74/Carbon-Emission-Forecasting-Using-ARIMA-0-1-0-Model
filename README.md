@@ -110,7 +110,7 @@ Carborn_df = Carborn_df[["Year", "Carborn"]].set_index("Year")
 - Decomposition Chart
 ![](Decomposition_chart1.png)
 
-From the decomposition chart, it shows a clear trend overtime, the yearly frequency does not account for seasonality is constant over time and also the residual appears to be close to white noise. 
+From the decomposition chart, it shows a clear trend overtime, the yearly frequency does not account for seasonality and it is constant over time and also the residual appears to be close to white noise. 
 > **Therefore ARIMA may be a good fit for the analysis**
 
 
@@ -202,7 +202,7 @@ To avoid overfitting, ARIMA(0, 1, 0) will be used in this analysis
 
 ## Training/Testing: 
 
-I splited the data for training and testing, 27 data points for trainoing and the last 3 data points was reserved for testing the accuracy of my model's prediction as shown in the code blocks above
+I splited the data for training and testing, 27 data points for training and the last 3 data points was reserved for testing the accuracy of my model's prediction as shown in the code blocks above
 
 
 
