@@ -56,6 +56,7 @@ import statsmodels as sm
 import numpy as np
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
+from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller 
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.tsa.arima.model import ARIMA
@@ -94,6 +95,26 @@ Carborn_df = Carborn_df[["Year", "Carborn"]].set_index("Year")
 
 ```
 
+## Model Fitting (Why ARIMA?)
+
+---
+    Carborn_df.plot()
+    
+    #Since there is no serious seasonal pattern additive method of seasonal decomposition will be used
+    
+    Carborn_decom = seasonal_decompose(Carborn_df['Carborn'], model='additive',period=1)
+    Carborn_decom.plot()
+
+---
+
+- Decomposition Chart
+![](Decomposition_chart.png)
+
+From the decomposition chart, it shows a clear trend overtime, the yearly frequency does not account for seasonality is constant over time and also the residual appears to be close to white noise. 
+> **Therefore ARIMA may be a good fit for the analysis**
+
+
+
 ## Stationarity Testing:
 
 ## before differencing
@@ -121,7 +142,7 @@ Carborn_df = Carborn_df[["Year", "Carborn"]].set_index("Year")
 |-----|--------|
 |-1.428161 | 0.568704|
 
-The result from ADF test shows that the stationarity of the to be less signifcant level. Thus, the  need for differencing (d)
+The result from ADF test failed to reject the the null hypothesis that the data is stationary. Thus, the  need for differencing (d) to de-trend
 
 ## After differencing
 ---
@@ -141,11 +162,8 @@ The Augmented Dickey-Fuller (ADF) test confirmed that the log-transformed series
 
 Model Selection: Based on low AIC/BIC scores and residual analysis, the optimal model was determined to be ARIMA(0,1,0) with drift (trend='t').
 
-p=0 (No Autoregressive component)
 
-d=1 (Integrated component/First difference, handled internally by the model)
-
-q=0 (No Moving Average component)
+d=1 (Integrated component/First difference)
 
 Hence: Yt′​=Yt ​− Yt−1
 
@@ -172,6 +190,13 @@ Hence: Yt′​=Yt ​− Yt−1
 
 ## ACF & PACF Plots
 ![](acfAndPacf.png)
+
+There no significant Autocorrelation and partial Autocorrelation observed after d=1, thus;
+p=0 (No Autoregressive component)
+
+q=0 (No Moving Average component)
+
+To avoid overfitting, ARIMA(0, 1, 0) will be used in this analysis
 
 
 
@@ -261,7 +286,7 @@ The Mean Absolute Error (MAE), Root Mean Square and the Mean Absolute Percnetage
 ---
 
 
-## Test forecast values VS actual values
+## Test forecast values VS test actual values
 ![](TEST_FORECASTandACTUAL.png)
 
 Mean Result shows that the predicted values did not really deviate from it's actual values, which means forecast are reliable 
@@ -270,7 +295,7 @@ Mean Result shows that the predicted values did not really deviate from it's act
 
 ---
 
-## 🧠 Key Insights & Discussion
+## 🧠 Key Insights/Discussion
 
 - The forecast reveals a steady upward trend in carbon emissions, indicating continuous dependency on fossil fuels.
 
@@ -280,14 +305,6 @@ Mean Result shows that the predicted values did not really deviate from it's act
 
 However, the model does not account for policy changes, technological innovation, or renewable adoption — which may alter future emission patterns.
 
-# Discussion
-Year to year continuous positive growth rate of Carbon emissions indicates:
-
-- Poor adoption of clean and renewable energy policy
-- Economic  expansion
-- Heavy reliance on fossil fuels
-
-The constraints for the poor transitioning to clean and renewable energy should be investigated and subtly address to avoid adverse climatic impacts of increasing growth of Carbon emission.
 
 
 ## 🛠️ Tools and Libraries
@@ -300,10 +317,10 @@ The constraints for the poor transitioning to clean and renewable energy should 
 | `statsmodels` | ARIMA model implementation |
 
 
-📬 Author
+[^1]: 📬 Author
 
 👤 Lukman Akorede
-Data Analyst, Data Science & Machine Learning Enthusiast
-GitHub: @lakorede74
+>Data Analyst, Data Science & Machine Learning Enthusiast
+
 ---
 
