@@ -108,7 +108,7 @@ Carborn_df = Carborn_df[["Year", "Carborn"]].set_index("Year")
 ---
 
 - Decomposition Chart
-![](Decomposition_chart.png)
+![](Decomposition_chart1.png)
 
 From the decomposition chart, it shows a clear trend overtime, the yearly frequency does not account for seasonality is constant over time and also the residual appears to be close to white noise. 
 > **Therefore ARIMA may be a good fit for the analysis**
