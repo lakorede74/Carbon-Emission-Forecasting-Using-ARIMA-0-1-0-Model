@@ -167,7 +167,7 @@ d=1 (Integrated component/First difference)
 
 Hence: Yt′​=Yt ​− Yt−1
 
-## The Code 
+## Code 
 ---
      
       result = adfuller(CO2_log)
@@ -233,7 +233,7 @@ The prediction for test (2021 - 2024) and for  2025 - 2027
 ![](https://github.com/lakorede74/Carbon-Emission-Forecasting-Using-ARIMA-0-1-0-Model/blob/9e05fb6c2b9d061d4fbcdc163e26c532e3feea74/PREDICTION.png)
 
 
-## The PLot 
+## The Plot 
 The plot of Carbon emission trend from 1984 - 2024 (green), predicted emissions from 2021 - 2027 (red)
 shows how close the predictions are to the actual values of the test period
 
